@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
 	char Sport_str[8];
 	struct sockaddr_in Cip;					// Client IP
 	struct sockaddr* Cip_addr = (struct sockaddr *) &Cip;
-	int S_fd, C_fd;				// Server, Client sockets
+	SOCKET S_fd, C_fd;				// Server, Client sockets
 #ifdef __WIN32__
 	WSADATA wsa;
 	int Sip_len = sizeof(Sip);	// length of addresses
@@ -210,7 +210,7 @@ int main(int argc, char **argv) {
 			printf("Could not create thread\n");
 		}
 		if (X32debug) {
-			printf("Thread 0x%x created\n", (unsigned int) thread);
+			printf("Thread %p created\n", (HANDLE) thread);
 			fflush(stdout);
 		}
 //		serve_client_handler(C_fd);
@@ -304,7 +304,7 @@ void *serve_client_handler(int ssock) {
 						if (X32debug) {
 							printf(
 									"Server received: %s, %d from UDP; sending to TCP client\n",
-									o_buf, strlen(o_buf));
+									o_buf, (int)strlen(o_buf));
 							fflush(stdout);
 						}
 						if ((send(ssock, o_buf, strlen(o_buf), 0)) < 0) {

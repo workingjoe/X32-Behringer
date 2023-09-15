@@ -31,6 +31,8 @@
 // v 1.46: Errors in treating side commands such as "quit", "xremote", etc.
 //
 
+// bkt!! added replacement getline() which is a POSIX and not STD-C (at least not older versions)
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -42,6 +44,35 @@
 char					broadcast = 1;
 #define millisleep(a)	Sleep(a)
 HANDLE					thread;
+
+#ifndef getline
+ssize_t getline(char **restrict buffer, size_t *restrict size,
+                FILE *restrict fp) {
+    register int c;
+    register char *cs = NULL;
+
+    if (cs == NULL) {
+        register int length = 0;
+        while ((c = getc(fp)) != EOF) {
+            cs = (char *)realloc(cs, ++length+1);
+            if ((*(cs + length - 1) = c) == '\n') {
+                *(cs + length) = '\0';
+                *buffer = cs;
+                break;
+            }
+        }
+        return (ssize_t)(*size = length);
+    } else {
+        while (--(*size) > 0 && (c = getc(fp)) != EOF) {
+            if ((*cs++ = c) == '\n')
+                break;
+        }
+        *cs = '\0';
+    }
+    return (ssize_t)(*size=strlen(*buffer));
+}
+#endif /* getline */
+
 #else
 #include <sys/socket.h>
 #include <sys/select.h>

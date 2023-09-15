@@ -80,7 +80,7 @@ MSG			wMsg;
 OPENFILENAME ofn;       			// common dialog box structure
 HANDLE hf;              			// file handle
 
-FILE	*log_file;
+static  FILE	*log_file;
 FILE	*Xin, *Fold;
 int		delta_scene;
 char	Finipath[1024];	// resolved path to .ini file
@@ -161,7 +161,7 @@ int					r_status;
 //
 //
 // type cast union
-union littlebig {
+static union littlebig {
 	char	cc[4];
 	int		ii;
 	float	ff;

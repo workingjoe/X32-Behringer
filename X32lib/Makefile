@@ -13,15 +13,19 @@
 # You should have received a copy of the GNU General Public License                          
 # along with this program; if not, write to the Free Software                                
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA                  
-#                                                                                            
+#
+# bkt!!
+# mingw32-make.exe clean 
+# mingw32-make.exe all                                                                                            
 #
 CC=gcc
 RM=rm -rf
 
-SRCS := $(shell find . -name '*.c')
+#  SRCS := $(shell find . -name '*.c') 
+SRCS := $(shell ls *.c)
 OBJS := $(addsuffix .o,$(basename $(SRCS)))
 
-CFLAGS=-O0 -g3 -Wall
+CFLAGS=-O0 -g3 -Wall -luser32
 TARGET=libX32.a
 
 

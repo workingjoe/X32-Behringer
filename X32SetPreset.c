@@ -90,7 +90,7 @@ MSG			wMsg;
 OPENFILENAME ofn;       			// common dialog box structure
 HANDLE hf;              			// file handle
 
-FILE	*log_file;
+static	FILE *log_file;
 FILE	*Xin, *Fold;
 int		delta_scene;
 char	Finipath[1024];	// resolved path to .ini file
@@ -223,7 +223,7 @@ FILE 				*res_file;
 int					r_status;
 //
 // type cast union
-union littlebig {
+static union littlebig {
 	char	cc[4];
 	int		ii;
 	float	ff;
@@ -365,7 +365,7 @@ char 	str1[LENFILE];
         hwndcombo = CreateWindowW(L"COMBOBOX", NULL, CBS_DROPDOWN | WS_CHILD | WS_VISIBLE,
         		435, 5, 95, 140, hwnd, (HMENU)7, NULL, NULL);
         // Load dropdown item list
-        char tmpstr[8];
+        char tmpstr[10];
         for (k = 1; k < 9; k++) {
         	sprintf(tmpstr, "Ch%02d/Fx%1d", k, k);
         	SendMessage(hwndcombo, CB_ADDSTRING,(WPARAM) 0,(LPARAM)tmpstr);

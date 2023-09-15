@@ -614,14 +614,14 @@ int main(int argc, char **argv) {
 	int i;
 	//
 	// Init structures
-	strncpy(uriff.s, "riff",4);
-	strncpy(uRIFF.s, "RIFF",4);
-	strncpy(uwave.s, "wave",4);
-	strncpy(uWAVE.s, "WAVE",4);
-	strncpy(ufmt.s, "fmt ",4);
-	strncpy(uFMT.s, "FMT ",4);
-	strncpy(udata.s, "data",4);
-	strncpy(uDATA.s, "DATA",4);
+	/* strncpy(uriff.s, "riff",4); */ memcpy_s(uriff.s, 4, "riff", 1);
+	/* strncpy(uRIFF.s, "RIFF",4); */ memcpy_s(uRIFF.s, 4, "RIFF", 1);
+	/* strncpy(uwave.s, "wave",4); */ memcpy_s(uwave.s, 4, "wave", 1);
+	/* strncpy(uWAVE.s, "WAVE",4); */ memcpy_s(uWAVE.s, 4, "WAVE", 1);
+	/* strncpy(ufmt.s, "fmt ",4);  */ memcpy_s(ufmt.s,  4, "fmt ", 1);
+	/* strncpy(uFMT.s, "FMT ",4);  */ memcpy_s(uFMT.s,  4, "FMT ", 1);
+	/* strncpy(udata.s, "data",4); */ memcpy_s(udata.s, 4, "data", 1);
+	/* strncpy(uDATA.s, "DATA",4); */ memcpy_s(uDATA.s, 4, "DATA", 1);
 	//
 	GUI = 1;				// aim for GUI mode
 	keep_running = 1;		// mainloop flag

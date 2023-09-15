@@ -608,7 +608,7 @@ int f_play(int fNum) {
 			} else {
 				if (fTree->fType == NIL) {
 					printf("Unknown type, Sure? ");
-					if (gets(tmpstr) != NULL) {			// read input line (wait mode)
+					if (fgets(tmpstr,sizeof(tmpstr), stdin) != NULL) {			// read input line (wait mode)
 						if (tmpstr[0] == 'y' || tmpstr[0] == 'Y') {
 							//
 							// select file index is equivalent to play file
@@ -643,7 +643,7 @@ int f_playName(char* str) {
 		} else {
 			if (fTree->fType == NIL) {
 				printf("Unknown type, Sure? ");
-				if (gets(tmpstr) != NULL) {			// read input line (wait mode)
+				if (fgets(tmpstr, sizeof(tmpstr), stdin) != NULL) {			// read input line (wait mode)
 					if (tmpstr[0] == 'y' || tmpstr[0] == 'Y') {
 						//
 						// select file index is equivalent to play file
@@ -836,7 +836,7 @@ int main(int argc, char **argv) {
 	// "infinite" loop for shell commands
 	while (keep_on) {
 		printf("%s ", X32prompt.cc);		// display prompt
-		if (gets(tmpstr) != NULL) {			// read input line (wait mode)
+		if (fgets(tmpstr, sizeof(tmpstr), stdin) != NULL) {			// read input line (wait mode)
 			//
 			// Parse commands
 			if (strncmp(tmpstr, "ls", 2) == 0)

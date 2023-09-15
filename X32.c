@@ -37,9 +37,9 @@
 // 0.86: Fixed missing comma in XiQeq[] definitions
 //
 #ifdef __WIN32__
-#include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <windows.h>
 #define ZMemory(a,b)	ZeroMemory(a, b)
 #else
 #define ZMemory(a,b)	memset(a, 0, b)
@@ -859,7 +859,9 @@ struct timeval timeout;
 #ifdef __WIN32__
 WSADATA wsa;
 int Client_ip_len = sizeof(Client_ip);			// length of addresses
-INT WSAAPI getaddrinfo(char *pNodeName, char *pServiceName, struct addrinfo *pHints, struct addrinfo **ppResult);
+#ifndef getaddrinfo
+INT WSAAPI getaddrinfo(const char *pNodeName, const char *pServiceName, const struct addrinfo *pHints, struct addrinfo **ppResult);
+#endif /* getaddrinfo */
 #else
 socklen_t Client_ip_len = sizeof(Client_ip);	// length of addresses
 #endif

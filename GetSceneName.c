@@ -19,6 +19,8 @@
 #include <time.h>
 
 #ifdef __WIN32__
+#include <winsock2.h>
+#include <ws2tcpip.h>
 #include <windows.h>
 #else
 #include <sys/socket.h>

@@ -604,7 +604,7 @@ int  XMidiConnect() {
 	// MIDI in port
 	if (Xmidiinport) {
 		i = Xmidiinport - 1;;
-		if ((Mflag = midiInOpen(&MidiInDevice, i, (DWORD)(void*)XReceiveMidi, 0, CALLBACK_FUNCTION))!= MMSYSERR_NOERROR) {
+		if ((Mflag = midiInOpen(&MidiInDevice, i, (DWORD_PTR)(void*)XReceiveMidi, 0, CALLBACK_FUNCTION))!= MMSYSERR_NOERROR) {
 			sprintf(s_buf, "opening MIDI Intput returned #%d\n",Mflag);
 			MessageBox(NULL, s_buf, NULL, MB_OK);
 			XCloseMidiDevices();

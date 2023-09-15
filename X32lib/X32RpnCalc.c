@@ -30,6 +30,12 @@
 #include <stdlib.h>
 #define MAXSTACK	128		// Max depth of RPN calculator stack
 #define MAXPARAM	32		// Max number of command parameters
+
+//bkt!! there is a better way to get these... but w/e
+// #define MB_OK                       0x00000000L
+// #include <winuser.h>
+#include <Windows.h>
+
 //#define printdata	1
 //
 // Expression Calculator code

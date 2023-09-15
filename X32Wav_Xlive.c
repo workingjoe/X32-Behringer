@@ -268,7 +268,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	case WM_PAINT:
 		//
 		hdc = BeginPaint(hwnd, &ps);
-		SetBkMode(hdc, TRANSPARENT);
+		SetBkMode(hdc, TRANSPARENT);  //bkt!! GDI function
 		MoveToEx(hdc, 2, 1, NULL);
 		LineTo(hdc, wWidth-8, 1);
 		hdcMem = CreateCompatibleDC(hdc);
