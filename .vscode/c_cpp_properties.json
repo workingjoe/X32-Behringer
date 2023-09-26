@@ -1,9 +1,10 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "windows_make",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/X32lib"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,11 +12,24 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22621.0",
-            "compilerPath": "C:/mingw64/bin/gcc.exe",
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++11",
-            "intelliSenseMode": "gcc-x64",
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "intelliSenseMode": "${default}",
+            "compilerArgs": [
+                "-O0",
+                "-g3",
+                "-Wall",
+                "-o build",
+                "-LX32Lib",
+                "-lm",
+                "-lX32",
+                "-lws2_32",
+                "-lgdi32",
+                "-lcomdlg32",
+                "-lwinmm",
+                "-luser32"
+            ]           
         }
     ],
     "version": 4

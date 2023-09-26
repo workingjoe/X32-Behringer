@@ -162,7 +162,7 @@ int main() {
 	int		ten_mills = 10000;
 	int		status;
 
-	status = X32Connect("192.168.1.65", "10023");
+	status = X32Connect("192.168.0.2", "10023");
 	printf ("Connection status: %d\n", status);
 
 	if (status) {

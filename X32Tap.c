@@ -135,7 +135,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 //
 // Initialize communication with X32 server at IP ip and PORT port
 // Set default values to match your X32 desk
-	strcpy (Xip_str, "192.168.0.64");
+	strcpy (Xip_str, "192.168.0.2");
 	strcpy (Xport_str, "10023");
 //
 // Manage arguments

@@ -72,8 +72,8 @@ typedef struct sockaddr SOCKADDR;
 typedef struct in_addr IN_ADDR;
 #endif
 //
-// X32 to communicate on X32_IP (192.168.0.64) and X32 port (10023)
-// REAPER to communicate on Rea_IP (192.168.0.64) and REAPER ports
+// X32 to communicate on X32_IP (192.168.0.2) and X32 port (10023)
+// REAPER to communicate on Rea_IP (192.168.0.2) and REAPER ports
 //
 // Buffers: Xb_r, Xb_s, Xb_lr, Xb_ls - read, send and lengths for X32
 // Buffers: Rb_r, Rb_s, Rb_lr, Rb_ls - read, send and lengths for Reaper

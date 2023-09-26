@@ -66,7 +66,7 @@ char				c1;
 //
 // initialize communication with X32 server at IP ip and PORT port
 //	set a default value for server[]; change to match your X32 desk
-	strcpy (Xip_str, "192.168.0.64");
+	strcpy (Xip_str, "192.168.0.2");
 //	Xport_str[] = "10023" //change to use a different port
 	strcpy (Xport_str, "10023");
 //
@@ -96,7 +96,7 @@ char				c1;
 			printf("                   [-d 0/1 -v 0/1, debug verbose options]\n");
 			printf("                   [-s, X32fw ver. 0208, 0210, 0212- default: 0212]\n");
 			printf("                   [-t <delay> between commands in ms - default: 1]\n");
-			printf("                     default IP is 192.168.0.64    defaults debug: 0 verbose: 0\n");
+			printf("                     default IP is 192.168.0.2    defaults debug: 0 verbose: 0\n");
 			printf("reads from <stdin> scene IDs (from *.scn file) and parse scene data\n");
 			printf("updates X32 accordingly, thus restoring the scene to the connected X32\n\n");
 			return(0);

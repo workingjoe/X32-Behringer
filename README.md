@@ -88,7 +88,7 @@ usage: X32_command [-i X32 console ipv4 address]
                    [-t int  [10], delay between batch commands in ms]
                    [-s file, reads X32node (scene, snippet, presets) formatted data lines from 'file']
                    [-f file, sets batch mode on, getting input data from 'file']
-                     default IP is 192.168.0.64
+                     default IP is 192.168.0.2
 
  If option -s file is used, the program reads data from the provided file
  until EOF has been reached, and exits after that.
@@ -405,7 +405,7 @@ X->,   24 B: /fx/1/par/63~~~~,f~~[0.0000]
 ```
 
 ```
-usage: X32GEQ2cpy [-i X32 console ipv4 address] default 192.168.0.64
+usage: X32GEQ2cpy [-i X32 console ipv4 address] default 192.168.0.2
                   [-f FX slot#] default: 1
                   [-g FX slot#] default: 1
                   [-d A>B | B>A | R | C] default: A>B
@@ -419,20 +419,20 @@ usage: X32GEQ2cpy [-i X32 console ipv4 address] default 192.168.0.64
 ### X32GetScene ###
 X32GetScene: Get a Scene/Snippet file directly out of your X32 - compatible with FW 2.08, 2.10, and 2.12.
 
-The utility connects to the X32 (default IP is 192.168.0.64 and can be changed with option 
+The utility connects to the X32 (default IP is 192.168.0.2 and can be changed with option 
 -i) reads <stdin> to read the elements you want to get from the X32, and saves the result to <stdout>.
 The elements to get from the X32 are described/coded as they are in a typical .scn file. As a facility, you can provide an existing (partial or complete) scene file to get the elements from your X32. The values from the input scene file will be ignored.
 example:
 
 ```
-X32GetScene -i 192.168.1.32 -s name1 -n note1 <Default.scn >myscene.scn
+X32GetScene -i 192.168.0.2 -s name1 -n note1 <Default.scn >myscene.scn
 ```
 Will take all lines from Default.scn as requests to the X32, and generate a scene file with the current X32 values respective of the requests into a file called myscene.scn, with name and note values name1 and note1 respectively.
 
 When not providing a file as input, one has to type in requests one line at a time. Typing "exit" will terminate the program. For example (without -s or -n, the utility will ask for a name an notes):
 
 ```
-X32GetScene -i 192.168.1.32 -s name1 -n note1 >myscene.scn  
+X32GetScene -i 192.168.0.2 -s name1 -n note1 >myscene.scn  
 ```
 typing in:
 ```
@@ -453,19 +453,19 @@ creates a file myscene.scn contaning (actual values will depend on the state of 
 ### X32SetScene ###
 X32SetScene: Interprets a Scene/Snippet file and set your X32 accordingly - compatible with FW 2.08, 2.10, and 2.12
 
-The utility connects to the X32 (default IP is 192.168.0.64 and can be changed with option -i) reads <stdin> to read the scene file elements and transform them into OSC commands to the X32.
+The utility connects to the X32 (default IP is 192.168.0.2 and can be changed with option -i) reads <stdin> to read the scene file elements and transform them into OSC commands to the X32.
 The elements to send to the X32 are described/coded as in typical .scn files.
 example:
 
 ```
-X32SetScene -i 192.168.1.32 < myscene.scn
+X32SetScene -i 192.168.0.2 < myscene.scn
 ```
 Will take all lines from myscene.scn, interpret them and set the X32 state accordingly.
 
 When not providing a file as input, one has to type in requests one line at a time. Typing "exit" will terminate the program. For example:
 
 ```
-X32SetScene -i 192.168.1.32
+X32SetScene -i 192.168.0.2
 ```
 with typing in:
 ```
@@ -500,7 +500,7 @@ usage: X32USB [-i X32 console ipv4 address]
               [-d 0/1, [0], debug option]
               [-v 0/1  [1], verbose option]
               [-t <delay>, delay in ms between commands]
-                   default IP: 192.168.1.62
+                   default IP: 192.168.0.2
 
 Launch shell to accept the following commands applied to the X32 USB drive:
   help:               Displays a command reminder help
@@ -542,14 +542,14 @@ When recoding ends, the file is closed.
 
 The file can then be played back, time stamps associated with each recorded command ensure the commands will be played back at correct times, relative to the start of the play command.
 
-The utility runs in a terminal window (Windows cmd); Example,  assuming your X32 is at IP 192.168.1.32:
-    X32Replay -i 192.168.1.32
+The utility runs in a terminal window (Windows cmd); Example,  assuming your X32 is at IP 192.168.0.2:
+    X32Replay -i 192.168.0.2
 
 Additional option is-v 0/1; Attention, this option will display a lot of additional data and this can impact the responsiveness of the tool.
 
 
 ```
-Usage: X32Replay [-i X32 console ipv4 address] -default: 192.168.0.64
+Usage: X32Replay [-i X32 console ipv4 address] -default: 192.168.0.2
                  [-v 0/1, verbose option] -default: 0
                  [-f file name] -default: X32ReplayFile.txt
 
@@ -1034,13 +1034,13 @@ B0 4 12 127 | /ch/01/mix/fader ,f [$2 3 ! 0.7 0.5 ?]    # if $2 equals 3 then re
 Returns the name of the Scene that has just been loaded to X32
 
 
-The utility connects to the X32 (default IP is 192.168.0.62 and can be changed with option -i) and awaits the set of commands relative to a new scene being loaded into the X32. When this occurs, it returns the index and name of the scene that was just loaded to <stdout>.
+The utility connects to the X32 (default IP is 192.168.0.2 and can be changed with option -i) and awaits the set of commands relative to a new scene being loaded into the X32. When this occurs, it returns the index and name of the scene that was just loaded to <stdout>.
 
 The tool can do this a single time [-o option set to 1 (default)] or indefinitely (a ctrl-C is then necessary to stop the tool).
 
 ```
 usage: GetSceneName [-i X32 console ipv4 address]
-                     default IP is 192.168.1.62
+                     default IP is 192.168.0.2
 
                     [-v 0|1 prints welcome and connection status messages [default: 1]]
                     [-o 0|1 exits at first occurrence [default: 1]]

@@ -285,7 +285,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 //
 // Initialize communication with XR server at IP ip and PORT port
 // Set default values to match your XR desk
-	strcpy (Xip_str, "192.168.0.64");
+	strcpy (Xip_str, "192.168.0.2");
 	strcpy (Xport_str, "10024");
 //
 // Manage arguments
@@ -328,7 +328,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 			printf("                    [-t int  [10], delay between batch commands in ms]\n");
 //			printf("                    [-s file, reads X32node formatted data lines from 'file']\n");
 			printf("                    [-f file, sets batch mode on, getting input data from 'file']\n");
-			printf("                     default IP is 192.168.0.64\n\n");
+			printf("                     default IP is 192.168.0.2\n\n");
 //			printf(" If option -s file is used, the program reads data from the provided file \n");
 //			printf(" until EOF has been reached, and exits after that.\n\n");
 			printf(" If option -f file is used, the program runs in batch mode, taking data from\n");

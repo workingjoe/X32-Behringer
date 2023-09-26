@@ -62,7 +62,7 @@ fd_set 				ufds;
 //
 // initialize communication with X32 server at IP ip and PORT port
 //	set a default value for server[]; change to match your X32 desk
-	strcpy (Xip_str, "192.168.0.64");
+	strcpy (Xip_str, "192.168.0.2");
 //	port[] = "10023" //change to use a different port
 	strcpy (Xport_str, "10023");
 
@@ -85,7 +85,7 @@ fd_set 				ufds;
 		default:
 		case 'h':
 			printf("usage: X32GetScene [-i X32 console ipv4 address] [-s scene name][-n note\n");
-			printf("                     default IP is 192.168.0.64\n");
+			printf("                     default IP is 192.168.0.2\n");
 			printf("reads from <stdin> scene IDs to request to X32\n");
 			printf("writes to <stdout> scene IDs and parameters in readable format (identical to *.scn)\n\n");
 			return(0);

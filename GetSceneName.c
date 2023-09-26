@@ -118,7 +118,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 //
 // Initialize communication with X32 server at IP ip and PORT port
 // Set default values to match your X32 desk
-	strcpy (Xip_str, "192.168.1.62");
+	strcpy (Xip_str, "192.168.0.2");
 	strcpy (Xport_str, "10023");
 	verbose = 1;
 	onetime = 1;
@@ -138,7 +138,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 			default:
 		case 'h':
 			printf("usage: GetSceneName [-i X32 console ipv4 address]\n");
-			printf("                     default IP is 192.168.1.62\n\n");
+			printf("                     default IP is 192.168.0.2\n\n");
 			printf("                    [-v 0|1 prints welcome and connection status messages [default: 1]]\n");
 			printf("                    [-o 0|1 exits at first occurrence [default: 1]]\n");
 			printf("       Connects to X32 and scans for new scenes being loaded; when this happens,\n");

@@ -8,7 +8,7 @@
  *  interface:
  *    int X32connect(int Xconnected, char* Xip_str, int btime)
  *    Xconnected	0 if not already connected, 1 if connected
- *    Xip_str		the X32 IP address as a string (e.g. "192.168.1.64")
+ *    Xip_str		the X32 IP address as a string (e.g. "192.168.0.2")
  *    btime			the final timeout value after connection
  *
  *    returns 1 if connection to X32 is successful

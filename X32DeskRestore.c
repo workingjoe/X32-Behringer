@@ -490,7 +490,7 @@ int main(int argc, char **argv) {
 	wWinMain(hInstance, hPrevInstance, pCmdLine, nCmdFile);
 	return 0;
 #else
-	strcpy(Xip_str, "192.168.1.64");
+	strcpy(Xip_str, "192.168.0.2");
 	// manage command-line parameters
 	while ((input_intch = getopt(argc, argv, "i:h")) != -1) {
 		switch ((char)input_intch) {
@@ -504,7 +504,7 @@ int main(int argc, char **argv) {
 			default:
 			case 'h':
 				printf("X32DeskRestore - ver 1.00 - ©2018 - Patrick-Gilles Maillot\n\n");
-				printf("usage: X32DeskRestore [-i X32 console ipv4 address, default: 192.168.1.64]\n");
+				printf("usage: X32DeskRestore [-i X32 console ipv4 address, default: 192.168.0.2]\n");
 				printf("                      <Source file name/path>\n");
 				printf("X32DeskRestore restores an X32 based on data previously saved to a file using\n");
 				printf("X32DeskSave or from a X32 Scene or an X32 Snippet file\n\n");

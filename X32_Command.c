@@ -31,8 +31,6 @@
 // v 1.46: Errors in treating side commands such as "quit", "xremote", etc.
 //
 
-// bkt!! added replacement getline() which is a POSIX and not STD-C (at least not older versions)
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -44,35 +42,6 @@
 char					broadcast = 1;
 #define millisleep(a)	Sleep(a)
 HANDLE					thread;
-
-#ifndef getline
-ssize_t getline(char **restrict buffer, size_t *restrict size,
-                FILE *restrict fp) {
-    register int c;
-    register char *cs = NULL;
-
-    if (cs == NULL) {
-        register int length = 0;
-        while ((c = getc(fp)) != EOF) {
-            cs = (char *)realloc(cs, ++length+1);
-            if ((*(cs + length - 1) = c) == '\n') {
-                *(cs + length) = '\0';
-                *buffer = cs;
-                break;
-            }
-        }
-        return (ssize_t)(*size = length);
-    } else {
-        while (--(*size) > 0 && (c = getc(fp)) != EOF) {
-            if ((*cs++ = c) == '\n')
-                break;
-        }
-        *cs = '\0';
-    }
-    return (ssize_t)(*size=strlen(*buffer));
-}
-#endif /* getline */
-
 #else
 #include <sys/socket.h>
 #include <sys/select.h>
@@ -179,6 +148,72 @@ do {							\
 	else if (strcmp(InputLine, "verbose") == 0) printf(":: verbose is %s\n",((X32verbose)?"on":"off"));\
 	else if (strcmp(InputLine, "verbose off") == 0) 	X32verbose = 0;									\
 	else if (strcmp(InputLine, "verbose on") == 0) 	X32verbose = 1;									\
+
+
+// bkt!! added replacement getline() which is a POSIX and not STD-C (at least not older versions)
+#ifndef getline
+size_t getline(char **lineptr, size_t *n, FILE *stream)
+{
+	char *bufptr = NULL;
+	char *p = bufptr;
+	size_t size = 0;
+	int c       = 0;
+	const int ALLOCSIZE = LINEMAX;
+
+	if ((lineptr == NULL)
+	||  (stream  == NULL)
+	||  (n       == NULL) )
+	{
+		return -1;
+	}
+
+	bufptr = *lineptr;
+	size = *n;
+
+	c = fgetc(stream);
+	if (c == EOF)
+	{
+		return -1;
+	}
+	if (bufptr == NULL)
+	{
+		bufptr = (char *) malloc(ALLOCSIZE);
+		if (bufptr == NULL)
+		{
+			return -1;
+		}
+		size = ALLOCSIZE;
+	}
+	p = bufptr;
+	while (c != EOF)
+	{
+		if ((p - bufptr) > (size - 1))
+		{
+			size = size + ALLOCSIZE;
+			bufptr = realloc(bufptr, size);
+			if (bufptr == NULL)
+			{
+				return -1;
+			}
+			p = bufptr + (size - ALLOCSIZE);
+		}
+		*p++ = c;
+		if (c == '\n')
+		{
+			break;
+		}
+		c = fgetc(stream);
+	}
+
+	*p++ = '\0';
+	*lineptr = bufptr;
+	*n = size;
+
+	return p - bufptr - 1;
+}
+#endif /* getline */
+
+
 //
 //
 //
@@ -243,6 +278,7 @@ unsigned long getmyIP() {
 	return k;
 }
 #endif
+
 //
 //
 //
@@ -309,7 +345,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 			printf("                   [-t int  [10], delay between batch commands in ms]\n");
 			printf("                   [-s file, reads X32node formatted data lines from 'file']\n");
 			printf("                   [-f file, sets batch mode on, getting input data from 'file']\n");
-			printf("                     default IP is 192.168.1.62\n\n");
+			printf("                     default IP is 192.168.0.2\n\n");
 			printf(" If option -s file is used, the program reads data from the provided file \n");
 			printf(" until EOF has been reached, and exits after that.\n\n");
 			printf(" If option -f file is used, the program runs in batch mode, taking data from\n");

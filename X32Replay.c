@@ -118,7 +118,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 //
 // initialize communication with X32 server at IP ip and PORT port
 //	set a default value for server[]; change to match your X32 desk
-	strcpy (X32ip_ch, "192.168.0.64");			// default for X32
+	strcpy (X32ip_ch, "192.168.0.2");			// default for X32
 	strcpy (X32port_ch, "10023"); 				// This is the send & receive port for X32 (on our system and X32)
 	strcpy (X32file_ch, "X32ReplayFile.txt");	// This is the default filename for recording/playing data
 //
@@ -137,7 +137,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 			break;
 		default:
 		case 'h':
-			printf("usage: X32Replay [-i X32 console ipv4 address] -default: 192.168.0.64\n");
+			printf("usage: X32Replay [-i X32 console ipv4 address] -default: 192.168.0.2\n");
 			printf("                 [-v 0/1, verbose option] -default: 0\n");
 			printf("                 [-f file name] -default: X32ReplayFile.txt\n\n");
 			printf("  known commands:\n");

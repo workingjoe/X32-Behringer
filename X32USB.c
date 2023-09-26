@@ -734,7 +734,7 @@ int main(int argc, char **argv) {
 	//
 	// initialize communication with X32 server at IP ip and PORT port
 	//	set a default value for server[]; change to match your X32 desk
-	strcpy(Xip_str, "192.168.1.62");
+	strcpy(Xip_str, "192.168.0.2");
 	strcpy(Xport_str, "10023");
 	//
 	// Manage arguments
@@ -759,7 +759,7 @@ int main(int argc, char **argv) {
 			printf("              [-d 0/1, [0], debug option]\n");
 			printf("              [-v 0/1  [1], verbose option]\n");
 			printf("              [-t <delay>, delay in ms between commands]\n");
-			printf("                   default IP: 192.168.0.64\n\n");
+			printf("                   default IP: 192.168.0.2\n\n");
 			printf("Launch shell to accept the following commands applied to the X32 USB drive:\n");
 			printf("  ls                  List directory contents (with id and type)\n");
 			printf("  dir                 List directory contents (with id and type)\n");

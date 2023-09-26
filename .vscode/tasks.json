@@ -3,12 +3,23 @@
       {
          "type": "cppbuild",
          "label": "C/C++: gcc.exe build active file",
-         "command": "C:\\mingw64\\bin\\gcc.exe",
-         "args": [
-            "-g",
-            "${file}",
+         "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+         "args": 
+         [  "-O0",
+            "-g3",
+            "-Wall",
+            "-IX32lib",
             "-o",
-            "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+            "${file}", 
+            "-L${fileDirname}\\X32lib",                       
+            "-lm",
+            "-lX32",
+            "-lws2_32",            
+            "-lgdi32",                                    
+            "-lcomdlg32",                                    
+            "-lwinmm",                                    
+            "-luser32"                                                                        
          ],
          "options": {
             "cwd": "${fileDirname}"

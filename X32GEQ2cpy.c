@@ -81,7 +81,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 //
 // initialize communication with X32 server at IP ip and PORT port
 //	set a default value for server[]; change to match your X32 desk
-	strcpy (Xip_str, "192.168.0.64");
+	strcpy (Xip_str, "192.168.0.2");
 //	server_port[] = "10023" //change to use a different port
 	strcpy (Xport_str, "10023");
 // set defaults
@@ -123,7 +123,7 @@ socklen_t			Xip_len = sizeof(Xip);	// length of addresses
 			break;
 		default:
 		case 'h':
-			printf("usage: X32GEQ2cpy [-i X32 console ipv4 address] default 192.168.0.64\n");
+			printf("usage: X32GEQ2cpy [-i X32 console ipv4 address] default 192.168.0.2\n");
 			printf("                  [-f FX slot#] default: 1\n");
 			printf("                  [-g FX slot#] default: 1\n");
 			printf("                  [-d A>B | B>A | R | C] default: A>B\n");

@@ -696,7 +696,7 @@ main(int argc, char **argv)
 #else
 	keep_on = 1;
 	Xptype = 1;
-	strcpy(Xip_str, "192.168.1.64");
+	strcpy(Xip_str, "192.168.0.2");
 	// manage command-line parameters
 	while ((input_intch = getopt(argc, argv, "i:p:d:s:r:h")) != -1) {
 		switch ((char)input_intch) {
@@ -724,7 +724,7 @@ main(int argc, char **argv)
 			default:
 			case 'h':
 				printf("X32DeskSave - ver 1.00 - ©2018 - Patrick-Gilles Maillot\n\n");
-				printf("usage: X32DeskSave [-i X32 console ipv4 address, default: 192.168.1.64]\n");
+				printf("usage: X32DeskSave [-i X32 console ipv4 address, default: 192.168.0.2]\n");
 				printf("                   [-p <pattern file> File path to pattern input file]\n");
 				printf("                   [-d 0/1 DeskSave file]\n");
 				printf("                   [-s 0/1 Scene file]\n");
